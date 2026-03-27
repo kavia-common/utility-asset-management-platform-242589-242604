@@ -154,3 +154,11 @@ echo "To use with Node.js viewer, run: source db_visualizer/postgres.env"
 echo "To connect to the database, use one of the following commands:"
 echo "psql -h localhost -U ${DB_USER} -d ${DB_NAME} -p ${DB_PORT}"
 echo "$(cat db_connection.txt)"
+
+# Seed demo schema/data (safe to re-run)
+if [ -f "seed_demo_data.sh" ]; then
+    echo ""
+    echo "Running demo seed (safe to re-run)..."
+    chmod +x seed_demo_data.sh || true
+    ./seed_demo_data.sh || echo "⚠ Seed script failed (continuing). Check output above."
+fi
